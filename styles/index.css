@@ -4,6 +4,10 @@ p{
     margin : 0px;
 }
 
+#citySearch{
+    display : block;
+    margin-top: 10px;
+}
 
 .city{
     height : 300px;
