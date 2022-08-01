@@ -1,8 +1,11 @@
-img{
-    height : 100px;
-    width : 150px;
-}
-
 p{
     margin : 0px;
+}
+
+.hotelDetails{
+    padding : 0px 0px 10px 0px;
+}
+
+#Radison{
+    display : block;
 }

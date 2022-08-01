@@ -1,8 +1,19 @@
-img{
-    height : 100px;
-    width : 150px;
-}
+
 
 p{
     margin : 0px;
+}
+
+
+.city{
+    height : 300px;
+    width : 300px;
+}
+
+#View{
+    display : block;
+}
+
+.footer{
+    display : block;
 }
