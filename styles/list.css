@@ -6,3 +6,8 @@ p{
 .hotelImg{
     padding : 5px;
 }
+
+.hotelImage{
+    height : 150px;
+    width : 150px;
+}

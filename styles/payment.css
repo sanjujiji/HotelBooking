@@ -6,3 +6,12 @@ p{
 .RadisonDetails{
     padding : 0px 0px 10px 0px;
 }
+
+#Radison{
+    height: 500px;
+    width : 500px;
+}
+
+div h3{
+    margin-top: 10px;
+}
