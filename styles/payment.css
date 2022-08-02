@@ -7,8 +7,7 @@ p{
     background-color: rgb(132,136,139);
     width : 50%;
     height : 20%;
-    margin : 2% 0%;
-    /* align-items: center; */    
+    margin : 2% 0%;   
 }   
 
 #Radison{
@@ -39,4 +38,9 @@ div h3{
     border-radius: 5px;
     padding : 1% 2%;
 
+}
+
+#payNow{
+    color :black;
+    text-decoration: none;
 }

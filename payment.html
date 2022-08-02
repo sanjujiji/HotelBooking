@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/payment.css">
     <link rel="stylesheet" href="/styles/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <title>Payment</title>
 </head>
 <body>
     <div class="container">
-        <header>
-            <a href="index.html" target="_self"><img class="logo" src="/assests/images/logo.png" alt="logo"></a>
-            <a href="login.html" target="_blank">Login</a>
-        </header>   
+        <div id="header">
+            <header>
+                <a href="index.html" target="_self"><img class="logo" src="/assests/images/logo.png" alt="logo"></a>
+                <a href="login.html" id = "login" target="_self">Login</a>
+            </header> 
+        </div>   
         <div class="content">
             <div class="hotelContent">
                 <div class="RadisonDetails">
@@ -41,14 +44,18 @@
                 <p><b>Total Amount:</b> Rs 10000</p>
                 
             </div>
-            <a href="payment.html">Pay Now</a>   
+            <a href="payment.html" id="payNow">Pay Now</a> 
+            <br>
+            <br>  
         </div>  
         <footer>
-            <a id="contact" href="contact.html" target="_blank">Contact Us</a>
-            <div class="social">
-                <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
-                <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
-                <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
+            <div id="footerDiv">
+                <a id="contact" href="contact.html" target="_self">Contact Us</a>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
+                    <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
+                </div>  
             </div>
             <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
         </footer>

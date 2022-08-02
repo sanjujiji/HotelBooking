@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/index.css">
     <link rel="stylesheet" href="/styles/common.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <title>Index</title>
 </head>
 <body>
     <div class="container">
-        <header>
-            <img class="logo" src="/assests/images/logo.png" alt="logo">
-            <a href="login.html" target="_self">Login</a>
-        </header> 
+        <div id="header">
+            <header>
+                <img class="logo" src="/assests/images/logo.png" alt="logo">
+                <a href="login.html" id = "login" target="_self">Login</a>
+            </header> 
+        </div>
         <section>  
             <div class="content">
-                <div id="search">
-                    <input id="citySearch" type="text" placeholder="City">
+                <div id="citySearch">
+                    <!-- <div id="search"> -->
+                        <input id = "search" type="text" placeholder="City">
+                    <!-- </div> -->
                 </div>
                 <div id="cityDiv">
                     <a href="list.html" class="city" target="_self"><img id="cityDelhi" src="https://media-cdn.tripadvisor.com/media/photo-s/15/33/fe/a2/new-delhi.jpg"></a>
@@ -30,11 +35,13 @@
             </div>  
         </section>  
         <footer>
-            <a id="contact" href="contact.html" target="_self">Contact Us</a>
-            <div class="social">
-                <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
-                <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
-                <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
+            <div id="footerDiv">
+                <a id="contact" href="contact.html" target="_self">Contact Us</a>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
+                    <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
+                </div>  
             </div>
             <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
         </footer>

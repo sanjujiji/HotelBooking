@@ -5,22 +5,52 @@ p{
 
 .hotelImg{
     padding : 5px;
-   
+    color : black;
 }
 
 .hotelImage{
-    height : 150px;
-    width : 150px;
-   
-
+    height : 250px;
+    width : 250px;
 }
 
 #allHotels{
-    width : 40%;
-    
+    display : grid;
+    grid-template-columns: 50% 50%
 }
 
 .hotelDetails{
+    /* width : 40%; */
     background-color:  rgb(132,136,139);
-    margin : 2%;
+    margin : 4%;
+    margin-top: 2%;
+
+}
+
+.content {
+    padding-top: 100px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#View{
+    align-items: center;
+    margin : 10px;
+}
+
+#viewSection{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#List, #Map{
+    padding:10px;
+    color : black;
+    font-weight: bold;
+}
+
+#mapView{
+    display:none;
 }
