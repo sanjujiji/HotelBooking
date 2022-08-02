@@ -4,8 +4,12 @@ p{
 }
 
 .RadisonDetails{
-    padding : 0px 0px 10px 0px;
-}
+    background-color: rgb(132,136,139);
+    width : 50%;
+    height : 20%;
+    margin : 2% 0%;
+    /* align-items: center; */    
+}   
 
 #Radison{
     height: 500px;
@@ -14,4 +18,25 @@ p{
 
 div h3{
     margin-top: 10px;
+}
+
+.hotelContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+}
+
+#customerDetails{
+    margin : 2%;
+}
+
+.tariffDetails{
+    border: 1%;
+    margin : 2%;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    padding : 1% 2%;
+
 }

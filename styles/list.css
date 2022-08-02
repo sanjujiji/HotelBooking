@@ -5,9 +5,22 @@ p{
 
 .hotelImg{
     padding : 5px;
+   
 }
 
 .hotelImage{
     height : 150px;
     width : 150px;
+   
+
+}
+
+#allHotels{
+    width : 40%;
+    
+}
+
+.hotelDetails{
+    background-color:  rgb(132,136,139);
+    margin : 2%;
 }

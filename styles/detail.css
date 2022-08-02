@@ -3,12 +3,17 @@ p{
 }
 
 .hotelDetails{
-    padding : 0px 0px 10px 0px;
+    margin : 1% 4% 2% 4%;
 }
 
 #Radison{
     display : block;
     height : 500px;
     width : 500px;
+    padding : 2% 4% 0% 4%;
+}
+
+#details{
+    padding : 0% 4% 1% 4%;    
 }
 
