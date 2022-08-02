@@ -18,37 +18,47 @@
             </header> 
         </div>    
         <div class="content">
-            <section>
-                <img id="Radison" src="https://media-cdn.tripadvisor.com/media/photo-w/17/b3/09/b4/by-the-poolside.jpg"   alt="Radison Blu">
-            </section>
-            <section>
-                <form id="details" action="payment.html" method="GET" autocomplete="off">
-                    <label for="adults">Adults:</label>  
-                    <input type ="number" id="adults" name="adults" min="1" value="1">
-                    <br>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <br>
-                    <label for="fromDate">From Date:</label>
-                    <input type="date" id="fromDate" name="fromDate" required>
-                    <br>
-                    <label for="toDate">To Date:</label>
-                    <input type="date" id="toDate" name="toDate" required>
-                    <br>
-                    <label for="total">Total:</label>
-                    <input type="text" id="total" name="total" disabled>
-                    <br>
-                    <input type="submit" value="Book Now"> 
-                </form> 
-            </section>
-            <section class="hotelDetails">
+            <div class = "hotelEnquiry">
+                <div id="one">
+                    <img id="Radison" src="https://media-cdn.tripadvisor.com/media/photo-w/17/b3/09/b4/by-the-poolside.jpg"   alt="Radison Blu">
+                </div>
+                
+                <div id="two">
+                    <form id="details" action="payment.html" method="GET" autocomplete="off">
+                        <div>
+                            <label for="adults">Adults:</label>  
+                            <input type ="number" id="adults" name="adults" min="1" value="1">
+                        </div>
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div>
+                            <label for="fromDate">From Date:</label>
+                            <input type="date" id="fromDate" name="fromDate" required>
+                        </div>
+                        <div>
+                            <label for="toDate">To Date:</label>
+                            <input type="date" id="toDate" name="toDate" required>
+                        </div>
+                        <div>
+                            <label for="total">Total:</label>
+                            <input type="text" id="total" name="total" disabled>
+                        </div>
+                            <div id="bookBtn">
+                            <input type="submit" value="Book Now"> 
+                        </div>
+                    </form> 
+                </div>
+            </div>     
+            <div class="hotelDetails">
                 <h3>Radison Blue Hotel</h3>  
                 <br>
-                <p>RATING</p>     
+                <h4>RATING</h4>     
                 <br> 
                 <p>5 star</p>
                 <br>
-                <p>AMENITIES</p>
+                <h4>AMENITIES</h4>
                 <br>
                 <ul>
                     <li>Room service</li>
@@ -61,18 +71,20 @@
                 <h4>DESCRIPTION</h4>
                 <br>
                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quam, velit similique unde maxime aut minus quos natus nam quisquam sequi repellat, at deserunt omnis vel incidunt consequuntur provident eligendi!</p>
-            </section>
+            </div>
         </div>    
         <footer>
             <div id="footerDiv">
                 <a id="contact" href="contact.html" target="_self">Contact Us</a>
+                <div id="copy">
+                    <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
+                </div>
                 <div class="social">
                     <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
                     <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
                     <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
                 </div>  
             </div>
-            <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
         </footer>
     </div>
 </body>

@@ -1,21 +1,25 @@
-/* .social {
-    display : inline;
-} */
 
 .socialMedia{
     height : 20px;
     width : 22px;
+    
+}
+
+.social{
+    margin-right: 2%;
 }
 
 #contact{
-    display : block;
     text-decoration: none;
     color: #000;
+    margin-left: 2%;
 }
+
 
 .logo{
     height : 60px;
     width : 60px;
+    padding-left: 2%;
 }
 
 html,body, .container{
@@ -34,7 +38,7 @@ body{
 }
 
 #login{
-    padding-right: 10px;
+    padding-right: 2%;
     text-decoration: none;
     color : black;
    
@@ -62,13 +66,8 @@ footer{
 
 #footerDiv{
     display : flex;
-    justify-content: space-between;
     padding-top: 15px;
-}
-
-
-footer p {
-    text-align: center;
+    justify-content:space-between;
 }
 
 body{

@@ -16,27 +16,52 @@ p{
 }
 
 #cityDiv{
-    display : flex;
+    display : flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.delhiHover {
+    border-radius: 25%;
+    margin : 10px;
+    padding : 3%;  
+}
+
+.goaHover{
+    border-radius: 25%;
+    margin : 10px;
+    padding : 3%;  
+    display : flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.hydHover{
+    border-radius: 25%;
+    margin : 10px;
+    padding : 3%;  
+    display : flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.kolHover{
+    border-radius: 25%;
+    margin : 10px;
+    padding : 3%;  
+    display : flex; 
     align-items: center;
     justify-content: center;
 }
 
 
-
-#cityDelhi{
-    height : 150px;
-    width : 150px;
-    border-radius: 10%;   
-    
-}
-
-.city{
+.cityPic{
     border-radius: 25%;
     height : 150px;
     width : 150px;
     margin : 10px;
-    padding : 3%;
-    
+    /* padding : 3%; */
+    box-shadow: 10px 10px 10px  gray;
 }
 
 #View{
@@ -52,12 +77,80 @@ p{
     padding-left :10px;
     padding-bottom:5px;
     padding-top : 5px;
-    border: 1px solid transparent;
+    border: none;
+    outline : none;
     background-color: #f1f1f1;
     border-radius: 5px;
     width :30%;
 }
 
+.overlayDelhi {
+    position: absolute;
+    top: 530px;
+    left: 263px;
+    height: 155px;
+    width: 155px;
+    opacity: 0;
+    background-color: gray;
+    border-radius: 25%;
+  }
 
+  .overlayGoa {
+    position: absolute;
+    top: 530px;
+    left: 542px;
+    height: 153px;
+    width: 153px;
+    opacity: 0;
+    background-color: gray;
+    border-radius: 25%;
+  }
 
+  .overlayHyd {
+    position: absolute;
+    top: 530px;
+    left: 824px;
+    height: 153px;
+    width: 153px;
+    opacity: 0;
+    background-color: gray;
+    border-radius: 25%;
+  }
 
+  .overlayKol {
+    position: absolute;
+    top: 530px;
+    left: 1105px;
+    height: 153px;
+    width: 153px;
+    opacity: 0;
+    background-color: gray;
+    border-radius: 25%;
+  }
+
+  .delhiHover:hover .overlayDelhi {
+    opacity: 0.6;
+  }
+
+  .goaHover:hover .overlayGoa {
+    opacity: 0.6;
+  }
+
+  .hydHover:hover .overlayHyd {
+    opacity: 0.6;
+  }
+
+  .kolHover:hover .overlayKol {
+    opacity: 0.6;
+  }
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
