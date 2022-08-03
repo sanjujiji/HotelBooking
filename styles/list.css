@@ -67,3 +67,13 @@ a{
 #View:last-child:active+#allHotels{
     display : none;
 }
+
+.checked{
+    color : orange;
+    font-size : 20px;
+}
+
+.unchecked{
+    color:gray;
+    font-size: 20px;
+}

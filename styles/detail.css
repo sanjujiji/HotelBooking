@@ -9,7 +9,7 @@ p, .hotelDetails ul li{
     margin : 1% 4% 2% 4%;
 }
 
-#Radison{
+#myCarousel{
     height : 350px;
     width : 500px;
     padding : 2% 4% 0% 4%;
@@ -38,6 +38,9 @@ p, .hotelDetails ul li{
     max-height: 400px;
     padding-bottom: 1%;
     border: 1px solid rgba(0, 0, 0, 0.8);
+    display : flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #two label {
@@ -69,3 +72,18 @@ p, .hotelDetails ul li{
     background-color: green;
     color : white;
 }
+
+.checked{
+    color : orange;
+    font-size : 20px;
+}
+
+.unchecked{
+    font-size: 20px;
+}
+
+.glyphicon-chevron-left,
+.glyphicon-chevron-right{
+    color : rosybrown;
+    width : 55px;
+   }
