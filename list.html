@@ -8,24 +8,58 @@
     <link rel="stylesheet" href ="/styles/common.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <title>List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div id="header">
-            <header>
-                <a href="index.html" target="_self"><img class="logo" src="/assests/images/logo.png" alt="logo"></a>
-                <a href="login.html" id = "login" target="_self">Login</a>
-            </header> 
-        </div>
+    <div class="containerNew">
+        <div id="headerNew">
+            <a href="index.html" target="_self"><img class="logoNew" src="/assests/images/logo.png" alt="logoNew"></a>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-Login">
+                LOGIN
+            </button>
+        </div>    
+            <div class="modal fade" id="modal-Login" role="dialog">
+                <div class="modal-dialog">
+                <!-- Modal content-->
+                    <div class="modal-content"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">Please Login</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label for="input-userName">Username:</label>
+                            <input type="text" id="input-userName" class="form-control" required>
+                            <br>
+                            <label for="input-password">Password:</label>
+                            <input type="password" class="form-control" id="input-password" required>
+                            <br>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="pull-left">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>  
+                            </div>    
+                        </div><!--modal footer-->
+                    </div><!--modal content-->
+                </div><!--modal dialog -->
+            </div><!--modal -->
         <div class="content">
-            <section id="viewSection">
                 <div id="View">
-                    <a href="#allHotels" id="List">List View </a>
-                    <a href="#mapView" id="Map">Map View</a> 
-            </div>
-            </section>
-            <div id="allHotels">
-                <div class="hotelDetails">
+                    <button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true" id="ViewList" onclick="window.location.href='#allHotels'" >
+                        List View
+                    </button>
+                    <button type="button" class="btn btn-light" id="ViewMap" onclick="window.location.href='#mapView'">
+                        Map View
+                    </button>
+                    <div class="mapView">
+                        <img src="https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_960_720.png" alt ="Map">
+                        <p>MAP VIEW</p>
+                        <br>
+                    </div>
+                </div>
+                <div id="allHotels">
+                    <div class="hotelDetails">
                     <div>
                     <a href="detail.html" target="_self"> 
                         <img class="hotelImage" src="https://media-cdn.tripadvisor.com/media/photo-w/17/b3/09/b4/by-the-poolside.jpg"   alt="Radison Blu">
@@ -54,15 +88,17 @@
                     </div>
                 </div>
             </div>
-            <div id="mapView">
-                <img src="https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_960_720.png" alt ="Map">
-                <p>MAP VIEW</p>
-                <br>
-            </div>
+                <div class="mapView">
+                    <img src="https://cdn.pixabay.com/photo/2018/01/31/05/43/web-3120321_960_720.png" alt ="Map">
+                    <p>MAP VIEW</p>
+                    <br>
+                </div>
         </div>    
         <footer>
             <div id="footerDiv">
-                <a id="contact" href="contact.html" target="_self">Contact Us</a>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-contact">
+                    Contact Us
+                </button>
                 <div id="copy">
                     <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
                 </div>
@@ -74,6 +110,30 @@
             </div>
             
         </footer>
+        <div class="modal fade" id="modal-contact" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+                <div class="modal-content"> 
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title">Get in touch</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Thankyou for reaching out!!!</p>
+                        <p>Please enter your email and we will get back to you</p>
+                        <br>
+                        <label for="input-email">Email:</label>
+                        <input type="email" id="input-email" placeholder = "Enter your email id" required>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>  
+                        </div>    
+                    </div><!--modal footer-->
+                </div><!--modal content-->
+            </div><!--modal dialog -->
+        </div><!--modal -->
     </div>
 </body>
 </html>

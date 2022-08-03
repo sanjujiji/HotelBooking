@@ -1,6 +1,9 @@
-p{
+p, .hotelDetails ul li{
     margin : 0px;
+    font-family: 'Ubuntu', sans-serif;
+    color : black;
 }
+
 
 .hotelDetails{
     margin : 1% 4% 2% 4%;
@@ -26,6 +29,7 @@ p{
 #two{
     margin-top: 1.5%;
     border: 1px solid rgba(0, 0, 0, 0.8);
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #one{
@@ -36,7 +40,7 @@ p{
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
-label {
+#two label {
     display : inline-block;
     width : 150px;
     padding : 3%;
@@ -50,6 +54,18 @@ label {
     padding-left: 37%;
 }
 
-h3,h4{
+.hotelDetails h3,.hotelDetails h4{
     font-family: cursive;
+    font-weight: bolder;
+}
+
+#bookBtnId{
+    background: white;
+    border-color : green;
+    color : green;
+}
+
+#bookBtnId:hover {
+    background-color: green;
+    color : white;
 }

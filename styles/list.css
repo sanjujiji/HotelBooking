@@ -27,6 +27,10 @@ p{
 
 }
 
+.hotelDetails:hover{
+    background-color: rosybrown;
+}
+
 .content {
     padding-top: 100px;
 }
@@ -35,12 +39,12 @@ a{
     text-decoration: none;
 }
 
-#View{
+#ViewList, #ViewMap{
     align-items: center;
     margin : 10px;
 }
 
-#viewSection{
+#View{
     display : flex;
     justify-content: center;
     align-items: center;
@@ -52,6 +56,14 @@ a{
     font-weight: bold;
 }
 
-#mapView{
-    display:none;
+.mapView{
+    display : none;
+}
+
+#ViewMap:active + .mapView{
+    display : block;
+}
+
+#View:last-child:active+#allHotels{
+    display : none;
 }

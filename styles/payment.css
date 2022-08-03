@@ -1,9 +1,19 @@
 
 p{
     margin-left : 5px;
-    margin-bottom: 0px;
     float : left;
+    font-family: 'Ubuntu', sans-serif;
+    color : black;
+    margin-bottom: 0px;
 }
+
+.modal-body p{
+    color : black;
+    float : none;
+    font-family: Sans-serif;
+    
+}
+
 
 .RadisonDetails{
     background-color: rgb(132,136,139);
@@ -20,8 +30,10 @@ p{
     width : 270px;
 }
 
-div h3{
-    margin-top: 10px;
+h3{
+    /* margin-top: 10px; */
+    font-family: 'Ubuntu', sans-serif;
+    color : black;
 }
 
 .hotelContent{
@@ -35,9 +47,11 @@ div h3{
     margin : 2%;
 }
 
-h4{
-    float : left;
+#customerDetails h4 ,.tariffDetails h4{
     font-family: cursive;
+    float : left;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 
