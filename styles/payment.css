@@ -24,11 +24,58 @@ p{
     justify-content: center;  
     align-items: center;
 }   
+@media screen and (min-width:992px) {
+    
+    #Radison{
+        height: 300px;
+        width : 270px;
+    }
+    .RadisonDetails{
+        background-color: rgb(132,136,139);
+        height: 300px;
+        width : 400px;
+        margin : 2% 0%; 
+        display : flex;
+        justify-content: center;  
+        align-items: center;
+    }   
 
-#Radison{
-    height: 300px;
-    width : 270px;
+    #radisonDtls > h3{
+        font-size: 32px;
+    }
+
+    #radisonDtls > p{
+        font-size: 20px;
+    }
 }
+
+@media screen and (max-width:990px) {
+    
+    #Radison{
+        height: 150px;
+        width : 135px;
+        margin-top: 2%;
+    }
+    .RadisonDetails{
+        background-color: rgb(132,136,139);
+        height: 150px;
+        width : 200px;
+        margin : 2% 0%; 
+        display : flex;
+        justify-content: center;  
+        align-items: center;
+    }   
+
+    #radisonDtls > h3{
+        font-size: 3vw;
+        font-weight: bolder;
+    }
+
+    #radisonDtls > p{
+        font-size: 2vw;
+    }
+}
+
 
 h3{
     /* margin-top: 10px; */

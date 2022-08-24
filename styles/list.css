@@ -13,10 +13,9 @@ p{
     width : 250px;
 }
 
-#allHotels{
-    display : grid;
-    grid-template-columns: 50% 50%
-}
+/* #content{
+    position : relative;
+} */
 
 .hotelDetails{
     /* width : 40%; */
@@ -24,48 +23,19 @@ p{
     margin : 4%;
     margin-top: 2%;
     display : flex;
+    width : 40%;
+    /* float:left; */ 
 
 }
+
 
 .hotelDetails:hover{
     background-color: rosybrown;
 }
 
-.content {
-    padding-top: 100px;
-}
-
 a{
     text-decoration: none;
-}
-
-#ViewList, #ViewMap{
-    align-items: center;
-    margin : 10px;
-}
-
-#View{
-    display : flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#List, #Map{
-    padding:10px;
-    color : black;
-    font-weight: bold;
-}
-
-.mapView{
-    display : none;
-}
-
-#ViewMap:active + .mapView{
-    display : block;
-}
-
-#View:last-child:active+#allHotels{
-    display : none;
+    display: flex;
 }
 
 .checked{
@@ -76,4 +46,17 @@ a{
 .unchecked{
     color:gray;
     font-size: 20px;
+}
+/* #mapView{
+    display:inline;
+    /* grid-template-columns: 50% 50% 
+} */
+
+#pills-tab{
+    display : flex;
+    justify-content: center;
+}
+
+.text{
+    font-size: 1vw;
 }
