@@ -4,60 +4,21 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/styles/payment_new.css">
-        <link rel="stylesheet" href="/styles/common_new.css">
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">-->
+        
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <title>Index</title>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/styles/payment.css">
+        <link rel="stylesheet" href="/styles/common.css">
     </head>
     <body>
         <div class="main-container">
-            <!--navigation bar on the top-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-                <div class="container-fluid">  
-                    <div id="navbarSupportedContent">
-                        <ul class="navbar-nav uldiv">
-                            <li class="nav-item">
-                                <a href="index_new.html" target="_self"><img class="logoNew" src="/assests/images/logo.png" alt="logoNew"> </a>  
-                            </li>
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-Login" id="loginBtn">
-                                    LOGIN
-                                </button>
-                            </li>  
-                        </ul>    
-                    </div>
-                </div>
-            </nav>
-            <!--modal dialog box for the login button-->
-            <div class="modal fade" id="modal-Login" role="dialog">
-                <div class="modal-dialog">
-                <!-- Modal content-->
-                    <div class="modal-content"> 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3 class="modal-title">Please Login</h4>
-                        </div>
-                        <div class="modal-body">
-                            <label for="input-userName">Username:</label>
-                            <input type="text" id="input-userName" class="form-control" required>
-                            <br>
-                            <label for="input-password">Password:</label>
-                            <input type="password" class="form-control" id="input-password" required>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>  
-                            </div>    
-                        </div><!--modal footer-->
-                    </div><!--modal content-->
-                </div><!--modal dialog -->
-            </div><!--modal -->
-            <div style="height:60px"></div>
+            <p id="headerTemplate"></p>
+            <br>
+            <br>
             <div class="content">
                 <div class="hotelContent">
                     <!-- <div class="RadisonDetails"> -->
@@ -101,46 +62,34 @@
                     <br> 
                 </div> 
             </div>
-            <footer>
-                <div id="footerDiv">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-contact">
-                        Contact Us
-                    </button>
-                    <div id="copy">
-                        <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
-                    </div>
-                    <div class="social">
-                        <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
-                        <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
-                        <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
-                    </div>  
-                </div>
-                
-            </footer>
-            <div class="modal fade" id="modal-contact" role="dialog">
-                <div class="modal-dialog">
-                <!-- Modal content-->
-                    <div class="modal-content"> 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3 class="modal-title">Get in touch</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Thankyou for reaching out!!!</p>
-                            <p>Please enter your email and we will get back to you</p>
-                            <br>
-                            <label for="input-email">Email:</label>
-                            <input type="email" id="input-email" placeholder = "Enter your email id" required>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>  
-                            </div>    
-                        </div><!--modal footer-->
-                    </div><!--modal content-->
-                </div><!--modal dialog -->
-            </div><!--modal -->
+            <p id="footerTemplate"></p>
         </div>      <!--main-container div-->
+        <script type="text/javascript" src="/header_footer.js"></script>
+        <script>
+            //the below codes are to enable and disable the Pay Now button on login and logout
+            setInterval(checkLogin,1000);
+            setInterval(checkLogout,1000);
+            function checkLogin(){
+                let x = document.getElementById("logoutBtn");
+                if (window.getComputedStyle(x).display != "none" ){
+                    document.getElementById("bookBtnId").disabled = false;
+                
+                }
+            }
+
+            function checkLogout(){
+                let x = document.getElementById("loginBtn");
+                if (window.getComputedStyle(x).display != "none" ){
+                    document.getElementById("bookBtnId").disabled = true;
+                
+                }
+            }
+
+            //clicking on PayNow button should send an alert
+            document.getElementById("bookBtnId").addEventListener("click",()=>{
+                alert("Hi your booking is successful !!");
+            })
+
+        </script>
     </body>
 </html>

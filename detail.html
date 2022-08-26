@@ -4,64 +4,30 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/styles/detail_new.css">
-        <link rel="stylesheet" href="/styles/common_new.css">
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">-->
+        
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <title>Index</title>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="http://code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/styles/detail.css">
+        <link rel="stylesheet" href="/styles/common.css">
     </head>
     <body>
         <div class="main-container">
-            <!--navigation bar on the top-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
-                <div class="container-fluid">  
-                    <div id="navbarSupportedContent">
-                        <ul class="navbar-nav uldiv">
-                            <li class="nav-item">
-                                <a href="index_new.html" target="_self"><img class="logoNew" src="/assests/images/logo.png" alt="logoNew"> </a>  
-                            </li>
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-Login" id="loginBtn">
-                                    LOGIN
-                                </button>
-                            </li>  
-                        </ul>    
-                    </div>
-                </div>
-            </nav>
-            <!--modal dialog box for the login button-->
-            <div class="modal fade" id="modal-Login" role="dialog">
-                <div class="modal-dialog">
-                <!-- Modal content-->
-                    <div class="modal-content"> 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3 class="modal-title">Please Login</h4>
-                        </div>
-                        <div class="modal-body">
-                            <label for="input-userName">Username:</label>
-                            <input type="text" id="input-userName" class="form-control" required>
-                            <br>
-                            <label for="input-password">Password:</label>
-                            <input type="password" class="form-control" id="input-password" required>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>  
-                            </div>    
-                        </div><!--modal footer-->
-                    </div><!--modal content-->
-                </div><!--modal dialog -->
-            </div><!--modal -->
-            
+            <p id="headerTemplate"></p>
             <div class="content">
-                <div style="height: 60px"></div>
+               <br>
+               <br>
+               <br>
+               <br>
                 <div class = "hotelEnquiry">
                     <div id="one">
+                        
                         <!--Carousel-->
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <!-- Indicators -->
@@ -70,11 +36,10 @@
                               <li data-target="#myCarousel" data-slide-to="1"></li>
                               <li data-target="#myCarousel" data-slide-to="2"></li>
                             </ol>
-                          
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                               <div class="item active">
-                                <img src="https://media-cdn.tripadvisor.com/media/photo-w/17/b3/09/b4/by-the-poolside.jpg" alt="Hotel1pic">
+                                <img src="https://media-cdn.tripadvisor.com/media/photo-w/17/b3/09/b4/by-the-poolside.jpg" alt="Hotel1pic" >
                               </div>
                           
                               <div class="item">
@@ -84,8 +49,7 @@
                               <div class="item">
                                 <img src="https://media-cdn.tripadvisor.com/media/photo-w/0e/b2/64/3f/radisson-blu-plaza-delhi.jpg" alt="Hotel3pic">
                               </div>
-                            </div>
-                          
+                            </div><!--carousel-inner-->
                             <!-- Left and right controls -->
                             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                               <span class="glyphicon glyphicon-chevron-left"></span>
@@ -95,37 +59,62 @@
                               <span class="glyphicon glyphicon-chevron-right"></span>
                               <span class="sr-only">Next</span>
                             </a>
-                          </div>
-    
+                        </div><!--myCarousel-->
                         <!--Carousel End-->
-                    </div>
+                    </div><!--one ends-->
                     
                     <div id="two">
+                        <br>
                         <form id="details" action="payment.html" method="GET" autocomplete="off">
-                            <div>
-                                <label for="adults">Adults:</label>  
-                                <input type ="number" id="adults" name="adults" min="1" value="1">
+                            <div class="row">
+                                <div class="col-25">
+                                <label for="adults">Adults:</label> 
+                                </div> 
+                                <div class="col-75">
+                                <input type ="number" id="adults" name="adults" min="1" value="1" required>
                             </div>
-                            <div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-25">
                                 <label for="name">Name:</label>
+                                </div>
+                                <div class="col-75">
                                 <input type="text" id="name" name="name" required>
+                                </div>
                             </div>
-                            <div>
+                            <br>
+                            <div id="fromDateDiv" class="row">
+                                <div class="col-25">
                                 <label for="fromDate">From Date:</label>
-                                <input type="date" id="fromDate" name="fromDate" required>
                             </div>
-                            <div>
+                            <div class="col-75">
+                                    <input type="text"  id="fromDate" required>
+                                    </div>
+                            </div>
+                            <br>
+                            <div id="toDateDiv" class="row">
+                                <div class="col-25">
                                 <label for="toDate">To Date:</label>
-                                <input type="date" id="toDate" name="toDate" required>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="toDate" required>
+                                </div>
                             </div>
-                            <div>
+                            <br>
+                            <div class="row">
+                                <div class="col-25">
                                 <label for="total">Total:</label>
-                                <input type="text" id="total" name="total" disabled>
                             </div>
-                                <div id="bookBtn">
-                                    <button type="button" class="btn btn-success" id="bookBtnId" onclick="window.location.href='payment.html'">
-                                        Book Now
-                                    </button> 
+                            <div class="col-75">
+                                <input type="text" id="total" name="total" disabled>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="bookBtn">
+                                <button type="button" class="btn btn-success" id="bookBtnId" onclick="window.location.href='payment.html'">
+                                    Book Now
+                                </button> 
                             </div>
                         </form> 
                     </div>
@@ -154,46 +143,83 @@
                     <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quam, velit similique unde maxime aut minus quos natus nam quisquam sequi repellat, at deserunt omnis vel incidunt consequuntur provident eligendi!</p>
                 </div>
             </div>
-            <footer>
-                <div id="footerDiv">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-contact">
-                        Contact Us
-                    </button>
-                    <div id="copy">
-                        <p>&copy;2020 ROOM SEARCH PVT. LTD.</p>
-                    </div>
-                    <div class="social">
-                        <a href="https://www.facebook.com/" target="_blank"><img class="socialMedia" src="/assests/images/facebook.png"></a>
-                        <a href="https://www.instagram.com/" target="_blank"><img class="socialMedia" src="assests/images/instagram.png"></a>
-                        <a href="https://www.twitter.com/" target="_blank"><img class="socialMedia" src="/assests/images/twitter.png"></a>
-                    </div>  
-                </div>
-                
-            </footer>
-            <div class="modal fade" id="modal-contact" role="dialog">
-                <div class="modal-dialog">
-                <!-- Modal content-->
-                    <div class="modal-content"> 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3 class="modal-title">Get in touch</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Thankyou for reaching out!!!</p>
-                            <p>Please enter your email and we will get back to you</p>
-                            <br>
-                            <label for="input-email">Email:</label>
-                            <input type="email" id="input-email" placeholder = "Enter your email id" required>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>  
-                            </div>    
-                        </div><!--modal footer-->
-                    </div><!--modal content-->
-                </div><!--modal dialog -->
-            </div><!--modal -->
+            <br>
+            <br>
+            <br>
+            <p id="footerTemplate"></p>
         </div>      <!--main-container div-->
+        <script type="text/javascript" src="/header_footer.js"></script>
+        <script type= "text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        
+        <script type="text/javascript">
+            let fromDateId = document.getElementById("fromDate");
+            let toDateId = document.getElementById("toDate");
+            let adultsId = document.getElementById("adults");
+            //bring cursor on the first form element when the window loads
+            window.addEventListener("load",()=>{
+                adultsId.focus();
+            });
+
+            // This code is for enabling the datepicker
+             $(function() {
+                $("#fromDate").datepicker({                    
+                                            startDate: new Date()
+                                            });                                                     
+                                         }
+            );
+
+
+            //below function is to calculate the room cost when there is a change in the no. of adults
+            adultsId.onchange = function(){
+                let fromDateIdValue = fromDateId.value;
+                let toDateIdValue = toDateId.value;
+                let noOfAdults = document.getElementById("adults").value;
+                    calculateRoomCost(); 
+            }
+
+            
+            //this code is checking if the from date is less than to date
+            fromDateId.onchange = function() {
+                let fromDateIdValue = fromDateId.value;
+                let toDateIdValue = toDateId.value;
+                let noOfAdults = document.getElementById("adults").value;
+                $(function(){
+                let fromDateVal = Date.parse(fromDateId.value);
+                let nextDate = new Date(fromDateVal);
+                nextDate.setDate(nextDate.getDate() + 1);
+                $("#toDate").datepicker({                  
+                                        startDate: nextDate});
+                });
+                if ((fromDateIdValue != "") && (toDateIdValue != "") && (noOfAdults != ""))
+                    calculateRoomCost();
+            };
+
+            toDateId.onchange = function() {
+                let fromDateIdValue = fromDateId.value;
+                let toDateIdValue = toDateId.value;
+                let noOfAdults = document.getElementById("adults").value;
+               if ((fromDateIdValue != "") && (toDateIdValue != "") && (noOfAdults != ""))
+                    calculateRoomCost();
+            };
+
+            //function to calculate the total cost for the room
+            function calculateRoomCost(){
+                const RADISONPERDAY = 1000;
+                let fromIdValue = Date.parse(fromDateId.value);
+                let toIdValue = Date.parse(toDateId.value);
+                let noOfDays = (toIdValue - fromIdValue)/(1000*60*60*24);
+                let noOfAdults = document.getElementById("adults").value;
+
+                //update the total cost
+                if ((fromDateId.value == "") || (toDateId.value == ""))
+                    document.getElementById("total").value = "Rs. "+ RADISONPERDAY * noOfAdults;
+                else    
+                    document.getElementById("total").value = "Rs. "+RADISONPERDAY * noOfDays * noOfAdults;
+            }
+           
+            
+           
+
+            </script>
     </body>
 </html>

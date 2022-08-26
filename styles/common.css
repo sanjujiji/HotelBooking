@@ -1,6 +1,9 @@
 li{
     list-style:none;
 }
+.container-fluid{
+    padding-left: 0px;
+}
 
 
 .logoNew{
@@ -14,7 +17,8 @@ li{
     justify-content: space-between;
     align-items: center;
     padding-left: 0px;
-    margin-right: 10%;
+    /* padding-right: 20px; */
+    margin-right: 2%; 
     
 }
 
@@ -41,7 +45,7 @@ footer{
     background-color: rosybrown;
     position:fixed;
     height : 65px;
-    width: 100%;
+    width: 100vw;
     left : 0;
     bottom : 0;
 }
@@ -52,12 +56,29 @@ footer{
     justify-content:space-between;
 }
 
-.container-fluid{
-    margin:0% 1%;
+
+#navbarSupportedContent{
     background-color: rosybrown;
+    height : 10vh;
+    width : 100vw;
+    /* margin-left: 0; */
+    display : flex;
+    justify-content: space-evenly;
 }
 
 * {
     font-family: 'Ubuntu',sans-serif;
 }
 
+#logoutBtn{
+    display : none;
+}
+
+#headerTemplate{
+    margin : 0;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

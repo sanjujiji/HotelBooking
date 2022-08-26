@@ -10,9 +10,9 @@ p, .hotelDetails ul li{
 }
 
 #myCarousel{
-    height : 350px;
+    height : 365px;
     width : 500px;
-    padding : 2% 4% 0% 4%;
+    /* padding : 2% 4% 0% 4%; */
 }
 
 #details{
@@ -27,30 +27,26 @@ p, .hotelDetails ul li{
 }
 
 #two{
-    margin-top: 1.5%;
+    /* margin-top: 1.5%; */
+    margin-top: 1%;
+    max-height: 400px;
     border: 1px solid rgba(0, 0, 0, 0.8);
-    font-family: 'Ubuntu', sans-serif;
+    padding-bottom: 1%;
+    /* font-family: 'Ubuntu', sans-serif; */
 }
 
 #one{
     margin-top: 1%;
-    text-align: center;
     max-height: 400px;
     padding-bottom: 1%;
     border: 1px solid rgba(0, 0, 0, 0.8);
     display : flex;
     justify-content: center;
-    align-items: center;
-}
+} 
 
-#two label {
-    display : inline-block;
-    width : 150px;
-    padding : 3%;
-}
 
 #bookBtn{
-    padding-left: 37%;
+    padding-left: 30%;
 }
 
 .hotelDetails h3,.hotelDetails h4{
@@ -78,8 +74,35 @@ p, .hotelDetails ul li{
     font-size: 20px;
 }
 
-.glyphicon-chevron-left,
+.glyphicon-chevron-left{
+    color : rosybrown;
+    width : 55px;
+    left : 0;
+   }
+
 .glyphicon-chevron-right{
     color : rosybrown;
     width : 55px;
    }
+
+#fromDateDiv,#toDateDiv{
+    display : flex;
+    vertical-align: middle;
+    align-items: center;
+    
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  /* Floating column for inputs: 75% width */
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  

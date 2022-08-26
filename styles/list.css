@@ -40,17 +40,13 @@ a{
 
 .checked{
     color : orange;
-    font-size : 20px;
+    font-size : 1em;
 }
 
 .unchecked{
     color:gray;
-    font-size: 20px;
+    font-size: 1em;
 }
-/* #mapView{
-    display:inline;
-    /* grid-template-columns: 50% 50% 
-} */
 
 #pills-tab{
     display : flex;
@@ -58,5 +54,9 @@ a{
 }
 
 .text{
-    font-size: 1vw;
+    font-size: 1em;
+}
+
+.col-lg-6{
+    padding-left: 0px;
 }
