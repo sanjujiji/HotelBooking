@@ -1,0 +1,119 @@
+
+p{
+    margin-left : 5px;
+    float : left;
+    font-family: 'Ubuntu', sans-serif;
+    color : black;
+    margin-bottom: 0px;
+}
+
+.modal-body p{
+    color : black;
+    float : none;
+    font-family: Sans-serif;
+    
+}
+
+
+.hotelDetails{
+    background-color: rgb(132,136,139);
+    height: 320px;
+    width : 400px;
+    margin : 2% 0%; 
+    display : flex;
+    justify-content: center;  
+    align-items: center;
+}   
+@media screen and (min-width:992px) {
+    
+    /* #hotel{
+        height: 300px;
+        width : 270px;
+    } */
+    .hotelDetails{
+        background-color: rgb(132,136,139);
+        /* height: 375px; */
+        width : 400px;
+        margin : 2% 0%; 
+        display : flex;
+        justify-content: center;  
+        align-items: center;
+    }   
+
+    #hotelDtls > h3{
+        font-size: 28px;
+    }
+
+    #customerDetails p,.tariffDetails p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:990px) {
+    
+    #hotel{
+        /* height: 150px;
+        width : 135px; */
+        margin-top: 2%;
+    }
+    .hotelDetails{
+        background-color: rgb(132,136,139);
+        height: 150px;
+        width : 200px;
+        margin : 2% 0%; 
+        display : flex;
+        justify-content: center;  
+        align-items: center;
+    }   
+
+    #hotelDtls > h3{
+        font-size: 3vw;
+        font-weight: bolder;
+    }
+
+    #hotelDtls > p{
+        font-size: 2vw;
+    }
+}
+
+
+h3{
+    /* margin-top: 10px; */
+    font-family: 'Ubuntu', sans-serif;
+    color : black;
+}
+
+.hotelContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-wrap:wrap; */
+}
+
+#customerDetails{
+    margin : 2%;
+}
+
+#customerDetails h4 ,.tariffDetails h4{
+    font-family: cursive;
+    float : left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+#payNow{
+    color :black;
+    text-decoration: none;
+}
+
+#secondHalf{
+    display : flex;
+    justify-content : space-evenly;
+    align-items: center;
+    background-color: rosybrown;
+    margin : 2%;
+    border : 1px solid;
+    border-radius: 5px;
+    margin-bottom: 10%;
+}

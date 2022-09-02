@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <title>Index</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="http://code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="/styles/detail.css">
+        <link rel="stylesheet" href="/styles/common.css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1rICYpaVFNd0QOTfWvvaGvOWrOU5S-ns"></script>
+        <script>
+        
+        //Adding the loader
+        function myFunction() {
+	        var myVar;
+  	        myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "block";  
+        }
+        </script>
+    </head>
+    <body onload = "myFunction">
+        <div id="map"></div>
+        <div id="loader"></div>
+        <div class="main-container">
+            <p id="headerTemplate"></p>
+            <div class="content">
+               <br>
+               <br>
+               <br>
+               <br>
+                <div class = "hotelEnquiry">
+                    <div id="one">
+                        <!--Carousel-->
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators"  id="carouselIndicator">
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" id="carouselInner">
+                            </div><!--carousel-inner-->
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                              <span class="glyphicon glyphicon-chevron-left"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                              <span class="glyphicon glyphicon-chevron-right"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                        </div><!--myCarousel-->
+                        <!--Carousel End-->
+                    </div><!--one ends-->
+                    
+                    <div id="two">
+                        <br>
+                        <form id="details" action="" method="GET" autocomplete="off">
+                            <div class="row">
+                                <div class="col-25">
+                                <label for="adults">Adults:</label> 
+                                </div> 
+                                <div class="col-75">
+                                <input type ="number" id="adults" name="adults" min="1" value="1" required>
+                            </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-25">
+                                <label for="name">Name:</label>
+                                </div>
+                                <div class="col-75">
+                                <input type="text" id="name" name="name" required>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div id="fromDateDiv" class="row">
+                                <div class="col-25">
+                                <label for="fromDate">From Date:</label>
+                            </div>
+                            <div class="col-75">
+                                    <input type="text"  id="fromDate" required>
+                                    </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div id="toDateDiv" class="row">
+                                <div class="col-25">
+                                <label for="toDate">To Date:</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="toDate" required>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-25">
+                                <label for="total">Total:</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="total" name="total" disabled>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="bookBtn">
+                                <button type="button" class="btn btn-success" id="bookBtnId" onclick="callPayment()">
+                                    Book Now
+                                </button> 
+                            </div>
+                        </form> 
+                    </div>
+                </div>     
+                <div class="hotelDetails">
+                    <h3 id="hotelName"></h3>  
+                    <h4>RATING</h4>     
+                    <p id="rating">
+                    </p>
+                    <h4>AMENITIES</h4>
+                    <ul id="amenities">
+                    </ul>
+                    <br>
+                    <h4 >DESCRIPTION</h4>
+                    <br>
+                    <p id="about"> </p>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <p id="footerTemplate"></p>
+        </div>      <!--main-container div-->
+        <script type="text/javascript" src="/header_footer.js"></script>
+        <script type= "text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <script src="travelapi.js"></script>
+        
+        <script type="text/javascript">
+            let fromDateId = document.getElementById("fromDate");
+            let toDateId = document.getElementById("toDate");
+            let adultsId = document.getElementById("adults");
+            //bring cursor on the first form element when the window loads
+            window.addEventListener("load",()=>{
+                adultsId.focus();
+            });
+
+            // This code is for enabling the datepicker
+             $(function() {
+                $("#fromDate").datepicker({                    
+                                            startDate: new Date()
+                                            });                                                     
+                                         }
+            );
+
+
+            //below function is to calculate the room cost when there is a change in the no. of adults
+            adultsId.onchange = function(){
+                let fromDateIdValue = fromDateId.value;
+                let toDateIdValue = toDateId.value;
+                let noOfAdults = document.getElementById("adults").value;
+                    calculateRoomCost(); 
+            }
+
+            
+            //this code is checking if the from date is less than to date
+            fromDateId.onchange = function() {
+                let fromDateIdValue = fromDateId.value;
+                let toDateIdValue = toDateId.value;
+                let noOfAdults = document.getElementById("adults").value;
+                $(function(){
+                let fromDateVal = Date.parse(fromDateId.value);
+                let nextDate = new Date(fromDateVal);
+                nextDate.setDate(nextDate.getDate() + 1);
+                $("#toDate").datepicker({                  
+                                        startDate: nextDate});
+                });
+                if ((fromDateIdValue != "") && (toDateIdValue != "") && (noOfAdults != ""))
+                    calculateRoomCost();
+            };
+
+            toDateId.onchange = function() {
+                let fromDateIdValue = fromDateId.value;
+                let toDateIdValue = toDateId.value;
+                let noOfAdults = document.getElementById("adults").value;
+               if ((fromDateIdValue != "") && (toDateIdValue != "") && (noOfAdults != ""))
+                    calculateRoomCost();
+            };
+
+            //function to calculate the total cost for the room
+            function calculateRoomCost(){
+                const RADISONPERDAY = 1000;
+                let fromIdValue = Date.parse(fromDateId.value);
+                let toIdValue = Date.parse(toDateId.value);
+                let noOfDays = (toIdValue - fromIdValue)/(1000*60*60*24);
+                let noOfAdults = document.getElementById("adults").value;
+
+                //update the total cost
+                if ((fromDateId.value == "") || (toDateId.value == ""))
+                    document.getElementById("total").value = "Rs. "+ RADISONPERDAY * noOfAdults;
+                else    
+                    document.getElementById("total").value = "Rs. "+RADISONPERDAY * noOfDays * noOfAdults;
+            }
+           
+            
+           //this function is to stop the loader
+            const poller = setInterval(function () {
+            const node = document.querySelector('.hotelDetails');
+            if (node) {
+                    document.getElementById("loader").style.display = "none";
+                    clearInterval(poller);}}, 1000);
+
+            //read the parameter for the hotel name
+            let url = window.location.search;
+	        let queryStart = url.indexOf("?") + 1;
+	        let queryEnd = url.length;
+            let query = url.slice(queryStart,queryEnd);
+            // let pairs = query.replace(/\+/g, " ").split("&")
+            var parms = {}, i, n, v, nv;
+
+            nv = query.split("=", 2);
+            n = decodeURIComponent(nv[0]);
+            v = decodeURIComponent(nv[1]);
+		
+            if (!parms.hasOwnProperty(n)) parms[n] = [];
+            parms[n].push(nv.length === 2 ? v : null);
+        
+
+            window.onload = buildDetailsPage(parms["hotelName"]); 
+
+            function callPayment(){
+                let adultNo = document.getElementById("adults").value;
+                let nameVal = document.getElementById("name").value;
+                let fromDateVal = document.getElementById("fromDate").value;
+                let toDateVal = document.getElementById("toDate").value;
+                let totalVal = document.getElementById("total").value;
+                let url = "payment.html?adultNo="+adultNo+"&nameVal="+nameVal+"&fromDateVal="+fromDateVal+"&toDateVal="+toDateVal+"&total="+totalVal;
+                window.location.href= url;
+            }        
+            </script>   
+    </body>
+</html>

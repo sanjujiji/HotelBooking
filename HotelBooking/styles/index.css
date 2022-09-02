@@ -1,0 +1,142 @@
+#citySearch{
+    background-image : url(https://media-cdn.tripadvisor.com/media/photo-o/14/10/2e/af/india.jpg);
+    background-size : cover;
+    background-position: center;
+    width : auto;
+    height : 60vh;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search{
+    /* padding-left :10px; */
+    padding-bottom:5px;
+    padding-top : 5px;
+    border: none;
+    outline : none;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    width :250px;
+}
+
+#city-cards-two{
+    display : none;
+}
+
+.overlay {
+    position: absolute;
+    top: 100;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+    text-align: center;
+    justify-content: center;
+    border-radius: 25%;
+}
+
+.city-card-and-name-inner:hover .overlay, .city-card-and-name-inner-two:hover .overlay{
+    opacity: 1;
+}
+
+.overlay span {
+    position:relative;
+    top:45%;
+}
+
+.city-image{
+    height: 150px;
+    width: 150px;
+    border-radius: 25%;
+    box-shadow: 10px 10px 10px grey;
+}
+
+
+a{
+    position : relative;
+    display : flex;
+    justify-content: center;
+}
+
+.city-card-and-name-inner {
+    margin-top: 3%;
+    display : flex;
+    justify-content: space-evenly;
+}
+
+.city-card-and-name-inner-two {
+    margin-top: 6%;
+    display : flex;
+    justify-content: space-evenly;
+}
+/* .main_container{
+    height : 100%;
+    width : auto;
+    /* overflow : scroll;     */
+/* }  */
+
+#viewM{
+    text-align: center;
+    color : white;
+    margin : 2%;
+    background-color: gray;
+}
+
+#viewL{
+    text-align: center;
+    color : white;
+    margin : 2%;
+    background-color: gray;
+    display : none;
+
+}
+
+
+
+#view{
+    display : flex;
+    justify-content: center;
+}
+
+/* Responsiveness */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    
+.city-card-and-name-inner-two {
+    margin-top: 3%;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .city-card-and-name-inner-two {
+        margin-top: 3%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .city-card-and-name-inner-two {
+        margin-top: 3%;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .city-card-and-name-inner-two {
+        margin-top: 6%;
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .city-card-and-name-inner-two {
+        margin-top: 6%;
+    }
+}
+  

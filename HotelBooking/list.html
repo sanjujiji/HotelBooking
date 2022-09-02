@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <title>List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/list.css">
+    <link rel="stylesheet" href ="/styles/common.css">
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1rICYpaVFNd0QOTfWvvaGvOWrOU5S-ns"></script>
+        <script>
+        //Adding the loader
+        function myFunction() {
+	        var myVar;
+  	        myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "block";  
+        }
+        </script>
+</head>
+<body onload = "myFunction">
+    <div id="loader"></div>
+    <div id="map"></div>
+    <div class="main-container">
+        <p id="headerTemplate"></p>
+        <br>
+        <br>
+        <br>
+        <div class="content">
+            <br>
+            <br>
+            <ul class="nav nav-pills" id="pills-tab">
+                <li class="active"><a data-toggle="pill" href="#allHotels">List View</a></li>
+                <li><a data-toggle="pill" href="#mapView">Map View</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="allHotels" class="tab-pane fade in active row">
+                </div>    
+                <div id="mapView" class="tab-pane in fade">
+                    <!-- <p>MAP VIEW</p> -->
+                </div>
+            </div>
+          </div>
+          <p id="footerTemplate"></p>
+    </div>      <!--main-container div-->
+    
+    <script type="text/javascript" src="/header_footer.js"></script>
+    <script src="travelapi.js"></script>
+    <script>
+        //this function is to stop the loader
+        const poller = setInterval(function () {
+        const node = document.querySelector('.hotelDetails');
+        if (node) {
+                document.getElementById("loader").style.display = "none";
+                clearInterval(poller);}}, 1000);
+
+        //calling the function only after the page loads 
+        //get the parameters from the URL
+        let url = window.location.search;
+	    let queryStart = url.indexOf("?") + 1;
+	    let queryEnd = url.length;
+	    let query = url.slice(queryStart,queryEnd);
+	    let pairs = query.replace(/\+/g, " ").split("&")
+	    var parms = {}, i, n, v, nv;
+
+	for (let i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+		
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+        window.onload = callGetHotelList(parms["geoId"],parms["cityLat"],parms["cityLong"]); 
+    </script>
+</body>
+</html>

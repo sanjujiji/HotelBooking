@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <title>Index</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/styles/payment.css">
+        <link rel="stylesheet" href="/styles/common.css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1rICYpaVFNd0QOTfWvvaGvOWrOU5S-ns"></script>
+        <script>
+            //Adding the loader
+            function myFunction() {
+                var myVar;
+                myVar = setTimeout(showPage, 3000);
+            }
+    
+            function showPage() {
+                document.getElementById("loader").style.display = "block";  
+            }
+        </script>
+    </head>
+    <body onload = "myFunction">
+        <div id="loader"></div>
+        <div class="main-container">
+            <p id="headerTemplate"></p>
+            <br>
+            <br>
+            <div class="content">
+                <div class="hotelContent">
+                    <div class="hotelDetails">
+                    </div>    
+                    <div class="hotelDetails">
+                        <div id="hotelDtls">
+                            <h3 id="hotelName"></h3>
+                            <br>
+                            <p id="ranking"></p>
+                            <br>
+                            <p id = "address"></p>
+                            <br> 
+                        </div>
+                    </div>
+                </div>
+                <div id="secondHalf">
+                    <div id="customerDetails">
+                        <h4>Name:</h4><p id="name"></p>
+                        <br>
+                        <br>
+                        <h4>Number of Adults:</h4><p id="noOfAdults"></p>
+                        <br>
+                        <br>
+                        <h4>Check-in Date:</h4><p id="checkInDate"></p>
+                        <br>
+                        <br>
+                        <h4>Check-out Date:</h4><p id="checkOutDate"></p>
+                    </div>
+                    <div class="tariffDetails">    
+                        <h4>Tariff Breakdown:</h4><p id="tariff">Rs 1000 x 2 Adults x 5 Nights</p>
+                        <br>
+                        <br>
+                        <h4>Total Amount:</h4><p id="totalAmount"></p>
+                        
+                    </div>
+                    <button type="button" class="btn btn-success" id="bookBtnId" disabled>
+                        Pay Now
+                    </button>  
+                    <br>
+                    <br> 
+                </div> 
+            </div>
+            <p id="footerTemplate"></p>
+        </div> <!--main-container div-->
+
+        <script type="text/javascript" src="travelapi.js"></script>
+        <script type="text/javascript" src="/header_footer.js"></script>
+        <script>
+            //the below codes are to enable and disable the Pay Now button on login and logout
+            setInterval(checkLogin,1000);
+            setInterval(checkLogout,1000);
+            function checkLogin(){
+                let x = document.getElementById("logoutBtn");
+                if (window.getComputedStyle(x).display != "none" ){
+                    document.getElementById("bookBtnId").disabled = false;
+                
+                }
+            }
+
+            //this code is to stop the loader
+            const poller = setInterval(function () {
+            const node = document.querySelector('.hotelDetails');
+            if (node) {
+                document.getElementById("loader").style.display = "none";
+                clearInterval(poller);}}, 1000);
+
+            function checkLogout(){
+                let x = document.getElementById("loginBtn");
+                if (window.getComputedStyle(x).display != "none" ){
+                    document.getElementById("bookBtnId").disabled = true;
+                
+                }
+            }
+
+            //clicking on PayNow button should send an alert
+            document.getElementById("bookBtnId").addEventListener("click",()=>{
+                alert("Hi your booking is successful !!");
+            })
+
+            window.onload = buildPaymentsPage();
+
+        </script>
+    </body>
+</html>

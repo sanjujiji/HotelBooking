@@ -1,0 +1,66 @@
+
+p{
+    margin : 0px;
+}
+
+.hotelImg{
+    padding : 5px;
+    color : black;
+    font-size: 1.5em;
+}
+
+.hotelImage{
+    height : 250px;
+    width : 250px;
+}
+
+/* #content{
+    position : relative;
+} */
+
+.hotelDetails{
+    /* width : 40%; */
+    background-color: lightgray;
+    margin : 4%;
+    margin-top: 2%;
+    display : flex;
+    width : 40%;
+    /* float:left; */ 
+
+}
+
+
+.hotelDetails:hover{
+    background-color: rosybrown;
+}
+
+a:link{
+    text-decoration: none;
+    display: flex;
+}
+
+.checked{
+    color : orange;
+    font-size : 1em;
+}
+
+.unchecked{
+    color:gray;
+    font-size: 1em;
+}
+
+#pills-tab{
+    display : flex;
+    justify-content: center;
+}
+
+.text{
+    font-size: 1em; 
+    color:black;
+    /* font-size: 24px; */
+}
+
+.col-lg-6{
+    padding-left: 0px;
+}
+

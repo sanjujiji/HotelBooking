@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <title>Index</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/styles/common.css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1rICYpaVFNd0QOTfWvvaGvOWrOU5S-ns"></script>
+        
+        <script>
+        //Adding the loader
+
+        function myFunction() {
+	        var myVar;
+  	        myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "block";  
+        }
+        </script>
+    </head>
+    <body onload = "myFunction">
+        <div id="map"></div>
+        <div id="loader"></div>
+        <div class="main-container">
+            <p id="headerTemplate"></p>
+            <section>
+                <div class="content">
+                    <div id="citySearch">
+                        <form>
+                        <input id = "search" placeholder="City" list="huge_list" onkeyup="getCitiesList()" autocomplete="off" oninput="selectedCity()">
+                        <datalist id = "huge_list">
+                        </datalist>
+                        </form>
+                    </div>
+                    <div id="city-cards" class="row" >
+                        <div class="city-card-and-name-inner col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                            <a href="#">  
+                                <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/33/fe/a2/new-delhi.jpg" class="city-image">
+                                <div class="overlay"><span class="pseudolink" onclick="getCity(event)">Delhi</span></div>
+                            </a>
+                        </div> 
+                        <div class="city-card-and-name-inner col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3" >
+                            <a href="#">  
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/33/fc/f0/goa.jpg" class="city-image">
+                            <div class='overlay'><span class="pseudolink" onclick="getCity(event)">Goa</span></div>
+                            </a>
+                        </div>
+                        <div class="city-card-and-name-inner col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                            <a href="#"> 
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/0f/98/f7/df/charminar.jpg" class="city-image">
+                            <div class='overlay'><span class="pseudolink" onclick="getCity(event)">Hyderabad</span></div>
+                            </a>
+                        </div>
+                        <div class="city-card-and-name-inner col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                            <a href="#"> 
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/33/fe/ac/kolkata-calcutta.jpg" class="city-image">
+                                <div class='overlay'><span class="pseudolink" onclick="getCity(event)">Kolkata</span></div>
+                            </a>    
+                        </div>
+                    </div>
+                    <div id="city-cards-two" class="row">
+                        <div class="city-card-and-name-inner-two col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3"> 
+                            <a href="#"> 
+                                <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/4d/46/b8/chennai-madras.jpg" class="city-image">
+                                <div class="overlay"><span class="pseudolink" onclick="getCity(event)" >Chennai</span></div>
+                            </a>
+                        </div> 
+                        <div class="city-card-and-name-inner-two col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3" >
+                            <a href="#"> 
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/15/33/fc/fc/agra.jpg" class="city-image">
+                            <div class='overlay'><span class="pseudolink" onclick="getCity(event)">Agra</span></div>
+                            </a>
+                        </div>
+                        <div class="city-card-and-name-inner-two col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                            <a href="#"> 
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/10/a3/3b/8a/screenshot-2017-09-12.jpg" class="city-image">
+                            <div class='overlay'><span class="pseudolink" onclick="getCity(event)">Jaipur</span></div>
+                            </a>
+                        </div>
+                        <div class="city-card-and-name-inner-two col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+                            <a href="#"> 
+                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/0c/d2/2f/7a/palace-from-the-outside.jpg" class="city-image">
+                                <div class='overlay'><span class="pseudolink" onclick="getCity(event)">Bengaluru</span></div>
+                            </a>    
+                        </div>
+                    </div> 
+                    <div id = "view" >  
+                        <div id="viewMore">
+                            <button type="button" class="btn btn-secondary" id="viewM">
+                                View More
+                            </button>
+                        </div>   
+                        <div id="viewLess">
+                            <button type="button" class="btn btn-secondary" id="viewL">
+                                View Less
+                            </button>
+                        </div>   
+                    </div>
+                    <br>
+                    <br> 
+                    <br>
+                </div><!--content-->
+            </section>
+            <p id="footerTemplate"></p>
+        </div> <!--main-container div-->
+        <script type="text/javascript" src="travelapi.js"></script>
+        <script type="text/javascript" src="/header_footer.js"></script>
+        
+        <script>
+            addEventListener("load", (event) => {
+                document.getElementById("loader").style.display = "none";
+        });
+
+            /*display the remaining 4 cards on clicking "View More"*/
+            let viewMoreBtn = document.getElementById("viewM");
+            let viewLessBtn = document.getElementById("viewL");
+            let viewMoreDiv = document.getElementById("viewMore");
+            let viewLessDiv = document.getElementById("viewLess");
+            viewMoreBtn.addEventListener("click",function(){
+                let cardsTwo = document.getElementById("city-cards-two");
+                cardsTwo.style.display = "block";
+                viewMoreBtn.style.display = "none";
+                viewLessBtn.style.display = "block";
+                viewLessDiv.style.textAlign = "center";
+            })
+            
+            /*on clicking View Less the 4 cards should get hidden*/
+            viewLessBtn.addEventListener("click",function(){
+                let cardsTwo = document.getElementById("city-cards-two");
+                cardsTwo.style.display = "none";
+                viewMoreBtn.style.display = "block";
+                viewLessBtn.style.display = "none";
+            })
+            
+            function getCity(ev){
+                let value = ev.target.parentElement.querySelector(".pseudolink").textContent;
+                sessionStorage.setItem("city",value);
+                getGeoId();
+            }
+
+            function selectedCity(){
+                let value = document.getElementById("select").value;
+                sessionStorage.setItem("city",value);
+            }
+        </script>
+        
+    </body>
+</html>
+
