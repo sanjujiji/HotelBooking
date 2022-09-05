@@ -578,7 +578,7 @@ function getCitiesList(){
 	
     if (searchList.value.length < min_characters ) { 
         return;
-    } else { 
+    } else {  
 		let xhrSearch = new XMLHttpRequest();
 		xhrSearch.withCredentials = true;
         xhrSearch.addEventListener("readystatechange", function () {
