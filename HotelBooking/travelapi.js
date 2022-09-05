@@ -1,5 +1,5 @@
 /*get the geo id from the API*/
-const TRAVELAPIKEY = "6571408e64mshb669dad3768ca34p1365b2jsn48b5bd334881"; //latest
+const TRAVELAPIKEY = "99402abc1emsh2c6d2a1e2219d67p1f96d7jsn01c8b3cca65a"; //latest
 const TRAVELHOST = "travel-advisor.p.rapidapi.com";
 
 
@@ -25,6 +25,8 @@ xhr1.open("GET", apiURL,false);
 xhr1.setRequestHeader("X-RapidAPI-Key", TRAVELAPIKEY);
 xhr1.setRequestHeader("X-RapidAPI-Host", TRAVELHOST);
 xhr1.send(data1);
+sessionStorage.setItem("cityLatitude",cityLat);
+sessionStorage.setItem("cityLongitude",cityLong);
 let url = "list.html?city="+city+"&geoId="+geoId+"&cityLat="+cityLat+"&cityLong="+cityLong;
 window.location.href= url;
 }
@@ -143,11 +145,15 @@ xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
 	var contentID_hotelName = {};
+	var hotelCoord = [];	
+	var counter = 0;
+
 	if (this.readyState === this.DONE) {
 		let rating,contentIdNew,hotelName,picURL;
 		let jsonFormat = JSON.parse(this.responseText);
 		for (let i = 0; i < 20 //jsonFormat.data.AppPresentation_queryAppListV2[0].sections.length
 		; i++){
+		
 			if (jsonFormat.data.AppPresentation_queryAppListV2[0].sections[i].__typename === "AppPresentation_SingleCard"){
 				hotelName = jsonFormat.data.AppPresentation_queryAppListV2[0].sections[i].singleCardContent.cardTitle.string;
 				
@@ -165,7 +171,7 @@ xhr.addEventListener("readystatechange", function () {
 				contentIdNew = jsonFormat.data.AppPresentation_queryAppListV2[0].sections[i].singleCardContent.cardLink.route.typedParams.contentId;
 				let result = Number(hotelName.indexOf("."));
 					result = result + 1;
-	  			let hotelName1 = hotelName.substring(result);
+	  			var hotelName1 = hotelName.substring(result);
 				
 				if (!contentID_hotelName.hasOwnProperty(contentIdNew)) contentID_hotelName[hotelName1] = [];
 				contentID_hotelName[hotelName1].push(contentIdNew);
@@ -193,20 +199,27 @@ xhr.addEventListener("readystatechange", function () {
 				
 				const xhrGetHotel = new XMLHttpRequest();
 				xhrGetHotel.withCredentials = true;
-				var hotelAdd;
-				
+				var hotelAdd,hotelLat, hotelLong;
 				xhrGetHotel.addEventListener("readystatechange", function () {
 					if (this.readyState === this.DONE) {
 						let jsonFormat = JSON.parse(this.responseText);
 						//get the address
-						for (let i = 0; i < jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections.length; i++){
-							if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].__typename == "AppPresentation_PoiLocation"){
-								hotelAdd = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].address.address;
+						for (let m = 0; m < jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections.length; m++){
+							if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[m].__typename == "AppPresentation_PoiLocation"){
+								
+								
+								hotelAdd = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[m].address.address;
+								hotelLat = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[m].address.geoPoint.latitude;
+								hotelLong = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[m].address.geoPoint.longitude;
+								
+								hotelCoord.push([hotelName1,hotelLat,hotelLong]);
+
 								break;
 							}
 
 						}//end of the main for
 						buildListPage(hotelName,rating,picURL,hotelAdd);
+
 					}
 				});
 				xhrGetHotel.open("POST", "https://travel-advisor.p.rapidapi.com/hotels/v2/get-details?currency=USD&units=km&lang=en_US",false);
@@ -219,10 +232,11 @@ xhr.addEventListener("readystatechange", function () {
 		
 		}
 		sessionStorage.setItem("contentId",JSON.stringify(contentID_hotelName));
+		sessionStorage.setItem("hotelCoordinates",JSON.stringify(hotelCoord));
 	}
 });
 
-xhr.open("POST", "https://travel-advisor.p.rapidapi.com/hotels/v2/list?currency=USD&units=km&lang=en_US");
+xhr.open("POST", "https://travel-advisor.p.rapidapi.com/hotels/v2/list?currency=USD&units=km&lang=en_US",false);
 xhr.setRequestHeader("content-type", "application/json");
 xhr.setRequestHeader("X-RapidAPI-Key", TRAVELAPIKEY);
 xhr.setRequestHeader("X-RapidAPI-Host", TRAVELHOST);
@@ -241,37 +255,37 @@ function buildListPage(hotelName,rating,picURL,hotelAddress){
 	anchorTagElement.href="#";
 	anchorTagElement.addEventListener("click",callBuildDetails);
 	internalDiv.appendChild(anchorTagElement);
-
+	
 	//creation of image tag
 	let imageElement = document.createElement("img");
 	imageElement.setAttribute("class","hotelImage");
 	imageElement.setAttribute("src",picURL);
 	imageElement.setAttribute("alt",hotelName);
 	anchorTagElement.appendChild(imageElement);
-
+	
 	//creation of text div element
 	let textElement = document.createElement("div");
 	textElement.setAttribute("class","text");
 	anchorTagElement.appendChild(textElement);
-
+	
 	//hotelName display
 	let hotelNameElement = document.createElement("p");
 	hotelNameElement.setAttribute("class","hotelImg");
 	hotelNameElement.setAttribute("id","hotelNameId");
 	hotelNameElement.innerHTML = hotelName;
 	textElement.appendChild(hotelNameElement);
-
+	
 	//rating display
 	let ratingElement = document.createElement("p");
 	ratingElement.id="ratingId";
 	ratingElement.innerHTML = rating;
 	textElement.appendChild(ratingElement);
-
+	
 	//star display
 	let starElement = document.createElement("span");
 	starElement.setAttribute("class","fa fa-star checked");
 	ratingElement.appendChild(starElement);
-
+	
 	//address to be added
 	let breakElement = document.createElement("br");
 	textElement.appendChild(breakElement);
@@ -279,11 +293,11 @@ function buildListPage(hotelName,rating,picURL,hotelAddress){
 	hotelAddrElement.setAttribute("class","text");
 	hotelAddrElement.innerHTML = hotelAddress;
 	textElement.appendChild(hotelAddrElement);
+	
 }
 
 function callBuildDetails(ev){
 	let hotelName = ev.target.parentElement.querySelector(".hotelImg").textContent;
-	console.log("hotelname="+hotelName);
 	let result = Number(hotelName.indexOf("."));
 		result = result + 1;
 	let hotelName1 = hotelName.substring(result);
@@ -327,6 +341,7 @@ function buildDetailsPage(hotelName){
 	
 	xhr.addEventListener("readystatechange", function () {
 		if (this.readyState === this.DONE) {
+			// 
 			sessionStorage.setItem("hotelDetails",this.responseText);
 			let jsonFormat = JSON.parse(this.responseText);
 			for (let i = 0; i < jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections.length; i++){
@@ -341,12 +356,10 @@ function buildDetailsPage(hotelName){
 				//get the amenities list and the hotel description
 				if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].__typename === "AppPresentation_PoiAbout"){
 					aboutHotel = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].about;
-					console.log("about hotel="+aboutHotel);
 					for (let k =0; k < jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].nullableContent.length;k++){
 						if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].nullableContent[k].__typename ==="AppPresentation_SmallTextListSubsection"){
 							for (let l = 0; l <jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].nullableContent[k].list.length;l++ ){
 								amenities.push(jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].nullableContent[k].list[l].string);
-								console.log("amenities list="+jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].nullableContent[k].list[l].string);
 							}
 		
 						}
@@ -357,7 +370,6 @@ function buildDetailsPage(hotelName){
 				//get the rating id
 				if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].__typename === "AppPresentation_PoiOverview"){
 					rating = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].rating;
-					console.log("rating="+rating);
 				}
 		
 			}//end of the main for
@@ -433,15 +445,14 @@ function buildPaymentsPage(){
 	for (let i = 0; i < jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections.length; i++){
 		if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].__typename == "AppPresentation_PoiLocation"){
 			hotelAdd = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].address.address;
-			console.log("hotelAdd="+hotelAdd);
 		}
 		if (jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].__typename == "AppPresentation_PoiOverview"){
 			hotelName = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].name;
-			console.log("hotelName="+hotelName);
+			
 			rating = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].rating;
-			console.log("rating="+rating);
+			
 			ranking = jsonFormat.data.AppPresentation_queryAppDetailV2[0].sections[i].rankingDetails.string;
-			console.log("ranking = "+ranking);
+			
 		}
 
 	}	
@@ -501,3 +512,98 @@ function buildPaymentsPage(){
 	document.getElementById("totalAmount").innerHTML = parms["total"];
 
 }
+
+
+function buildGoogleMaps(){
+	
+	var map;
+		let cityLat = sessionStorage.getItem("cityLatitude");
+		let cityLong = sessionStorage.getItem("cityLongitude");
+        var hotelCo = [[],[]];
+		sessionStorage.getItem("hotelCoordinates");
+
+		var jsonData = JSON.parse(sessionStorage.getItem("hotelCoordinates"));
+		
+        map = new google.maps.Map(document.getElementById("mapTwo") , {
+        center: { lat: parseFloat(cityLat), lng: parseFloat(cityLong)},
+        zoom: 12,
+		mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+        mapTypeId: 'satelllite',
+        disableDefaultUI: true,
+        position: google.maps.ControlPosition.RIGHT_CENTER,
+      },
+  });
+	
+	var infowindow = new google.maps.InfoWindow();
+  	for(let i = 0; i < jsonData.length;i++){
+    	
+    	infowindow = new google.maps.InfoWindow({
+    });
+
+	
+        var marker = new google.maps.Marker({
+            position: { lat: parseFloat(jsonData[i][1]), lng: parseFloat(jsonData[i][2])},
+            map: map
+        });
+	
+        //Attach click event to the marker.
+		(function (marker) {
+			marker.addListener("mouseover", function (e) {
+				//Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+				
+				let ahref = '<a href="detail.html?hotelName='+jsonData[i][0]+'">Book Now</a>';
+				var contentString = jsonData[i][0] +ahref;
+				infowindow.setContent( "<div style = 'width:200px;min-height:40px'>" + contentString+ "</div>");
+				infowindow.open(map, marker);
+			});
+
+		})(marker);
+
+		function callDetails(){
+			let url = "detail.html?hotelName="+jsonData[i][0];
+			window.location.href = url;
+		}
+	}
+}
+
+function getCitiesList(){
+
+	let dataSearch = null;
+    let searchList = document.getElementById("search");
+	let hugeList = document.getElementById("huge_list");
+	
+    // minimum number of characters before we start to generate suggestions
+    let min_characters = 3;
+	
+    if (searchList.value.length < min_characters ) { 
+        return;
+    } else { 
+		let xhrSearch = new XMLHttpRequest();
+		xhrSearch.withCredentials = true;
+        xhrSearch.addEventListener("readystatechange", function () {
+			// alert(this.readyState+"-"+this.DONE);
+            if (this.readyState === this.DONE) {
+                // We're expecting a json response so we convert it to an object
+                let response = JSON.parse(this.responseText);
+                // clear any previously loaded options in the datalist
+                hugeList.innerHTML = "";
+				for (let i = 0; i < response.data.Typeahead_autocomplete.results.length; i++){
+					if ((response.data.Typeahead_autocomplete.results[i].__typename == "Typeahead_LocationItem")&&
+					(response.data.Typeahead_autocomplete.results[i].detailsV2.placeType == "CITY")){
+					let eachName = response.data.Typeahead_autocomplete.results[i].detailsV2.names.name;
+                    // Create a new <option> element.
+                    let option = document.createElement("option");
+                    option.value = eachName;
+                    hugeList.appendChild(option);
+					}
+                };
+            }
+        });
+		let apiURL =  "https://travel-advisor.p.rapidapi.com/locations/v2/auto-complete?query="+searchList.value+"&lang=en_US&units=km";
+        xhrSearch.open("GET", apiURL,false);
+		xhrSearch.setRequestHeader("X-RapidAPI-Key", TRAVELAPIKEY);
+		xhrSearch.setRequestHeader("X-RapidAPI-Host", TRAVELHOST);
+		 xhrSearch.send(dataSearch);
+		}
+    }

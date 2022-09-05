@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/styles/list.css">
     <link rel="stylesheet" href ="/styles/common.css">
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1rICYpaVFNd0QOTfWvvaGvOWrOU5S-ns"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYJEQ_UMWHyNDfm144oycOBMg_jq5-f2I"></script>
+    
         <script>
         //Adding the loader
         function myFunction() {
@@ -23,7 +24,7 @@
         }
 
         function showPage() {
-            document.getElementById("loader").style.display = "block";  
+            document.getElementById("loader").style.display = "none";  
         }
         </script>
 </head>
@@ -40,13 +41,25 @@
             <br>
             <ul class="nav nav-pills" id="pills-tab">
                 <li class="active"><a data-toggle="pill" href="#allHotels">List View</a></li>
-                <li><a data-toggle="pill" href="#mapView">Map View</a></li>
+                <li><a data-toggle="pill" href="#mapView" onclick="buildGoogleMaps()">Map View</a></li>
             </ul>
             <div class="tab-content">
                 <div id="allHotels" class="tab-pane fade in active row">
                 </div>    
                 <div id="mapView" class="tab-pane in fade">
-                    <!-- <p>MAP VIEW</p> -->
+                    <!-- <p>MAP VIEW</p>  -->
+                    <div id = "mapTwo">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    
+                </div>
+                    
                 </div>
             </div>
           </div>
@@ -82,5 +95,6 @@
     }
         window.onload = callGetHotelList(parms["geoId"],parms["cityLat"],parms["cityLong"]); 
     </script>
+    
 </body>
 </html>

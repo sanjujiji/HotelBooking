@@ -64,3 +64,14 @@ a:link{
     padding-left: 0px;
 }
 
+#mapTwo{
+    height : 800px;
+    background-color: bisque;
+}
+
+/* html,
+body {
+  height: 500px;
+  margin: 0;
+  padding: 0;
+} */
